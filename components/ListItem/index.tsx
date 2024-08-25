@@ -1,11 +1,16 @@
 import { Image, StyleSheet, Text, View } from "react-native"
 import { PaymentMethodsType } from "../../types/payment";
 import { useState } from "react";
-
+import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 
 type Props = {
     type: 'sell' | 'product' | 'viewProduct';
     paymentMethod?: PaymentMethodsType;
+    data?: {
+        id: string,
+        name: string,
+        price: number
+    }
 }
 
 type SellProps = {
@@ -24,9 +29,10 @@ export const ListItem = (props: Props) => {
                 </View>
             )
         case "product":
+            if(!props.data) return <></>
             return (
                 <View style={styles.container}>
-                    <ProductItem />
+                    <ProductItem id={props.data?.id} name={props.data.name} price={props.data.price} />
                 </View>
             )
         case "viewProduct":
@@ -55,12 +61,23 @@ const SellItem = (props: SellProps) => {
     )
 }
 
-const ProductItem = () => {
+type ProductsProps = {
+    id: string,
+    name: string,
+    price: number
+}
+
+const ProductItem = (props: ProductsProps) => {
     return (
-        <View>
+        <View style={styles.productContainer}>
             {/* <Image source={require("assets/")} /> */}
-            <Text>Titulo Product</Text>
-            <Text>Descrição</Text>
+            <View>
+                <Text style={styles.titleItem}>{props.name}</Text>
+                <Text style={styles.priceItem}>R$ {String((props.price / 100).toFixed(2)).replace(".", ",")}</Text>
+            </View>
+            <View>
+                <SimpleLineIcons name="options-vertical" size={24} color="#868C9F" />
+            </View>
         </View>
     )
 }
@@ -99,5 +116,10 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: 'light',
         color: '#47C654'
+    },
+    productContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
     }
 })

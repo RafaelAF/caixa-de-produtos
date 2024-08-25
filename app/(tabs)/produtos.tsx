@@ -1,9 +1,55 @@
-import { Text, View } from "react-native";
+import { Text, View, SafeAreaView, StyleSheet, ScrollView } from "react-native";
+import { MainCard } from "../../components/MainCard";
+import { BoxCategory } from "../../components/BoxCategory";
+import { ListItem } from "../../components/ListItem";
+import { PaymentMethod } from "../../components/PaymentMethod";
+import { Search } from "../../components/Search";
 
 export default function Home() {
     return (
-        <View>
-            <Text>Produtos!</Text>
-        </View>
+        <SafeAreaView style={styles.container}>
+            <Search />
+            <View style={styles.trasactions}>
+                <Text style={styles.trasactionsTitle}>Transações recentes</Text>
+                <ScrollView>
+                    <ListItem type="product" data={{id: "asd", name: "Pastel de Flango", price: 1000}} />
+                    <ListItem type="product" data={{id: "asd", name: "Sopa de Macaco", price: 1500}} />
+                    <ListItem type="product" data={{id: "asd", name: "Arroz Doce", price: 850}} />
+                    <ListItem type="product" data={{id: "asd", name: "Batata Frita", price: 350}} />
+                    <ListItem type="product" data={{id: "asd", name: "Chá de amendoim", price: 1090}} />
+                    <ListItem type="product" data={{id: "asd", name: "Quentão", price: 1000}} />
+                    <ListItem type="product" data={{id: "asd", name: "Bolo de Muranguh", price: 1000}} />
+                    <ListItem type="product" data={{id: "asd", name: "Pastel de Flango", price: 1000}} />
+                    <ListItem type="product" data={{id: "asd", name: "Sopa de Macaco", price: 1500}} />
+                    <ListItem type="product" data={{id: "asd", name: "Arroz Doce", price: 850}} />
+                    <ListItem type="product" data={{id: "asd", name: "Batata Frita", price: 350}} />
+                    <ListItem type="product" data={{id: "asd", name: "Chá de amendoim", price: 1090}} />
+                    <ListItem type="product" data={{id: "asd", name: "Quentão", price: 1000}} />
+                    <ListItem type="product" data={{id: "asd", name: "Bolo de Muranguh", price: 1000}} />
+                </ScrollView>
+            </View>
+        </SafeAreaView>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#eee',
+        alignItems: 'center',
+        paddingTop: 47,
+        paddingHorizontal: 28,
+        gap: 42,
+        // justifyContent: 'centser'
+    },
+    trasactions: {
+        flex: 1,
+        width: '100%',
+        // backgroundColor: '#f00'
+    },
+    trasactionsTitle: {
+        textAlign: 'left',
+        fontWeight: 'bold',
+        marginBottom: 20,
+    }
+})
