@@ -1,9 +1,8 @@
-import { Text, View, SafeAreaView, StyleSheet, ScrollView } from "react-native";
-import { MainCard } from "../../components/MainCard";
-import { BoxCategory } from "../../components/BoxCategory";
-import { ListItem } from "../../components/ListItem";
-import { PaymentMethod } from "../../components/PaymentMethod";
-import { Search } from "../../components/Search";
+import { Text, View, SafeAreaView, StyleSheet, ScrollView, Button, Pressable } from "react-native";
+import AntDesign from '@expo/vector-icons/AntDesign';
+import { ListItem } from "../../../components/ListItem";
+import { Search } from "../../../components/Search";
+import { router } from "expo-router";
 
 export default function Home() {
     return (
@@ -26,8 +25,14 @@ export default function Home() {
                     <ListItem type="product" data={{id: "asd", name: "Chá de amendoim", price: 1090}} />
                     <ListItem type="product" data={{id: "asd", name: "Quentão", price: 1000}} />
                     <ListItem type="product" data={{id: "asd", name: "Bolo de Muranguh", price: 1000}} />
+                    
                 </ScrollView>
             </View>
+            <Pressable style={styles.newProduct} onPress={()=>{
+                router.navigate("(tabs)/(products)/newproduct")
+            }}>
+                <AntDesign name="pluscircleo" size={64} color="#12A454" />
+            </Pressable>
         </SafeAreaView>
     )
 }
@@ -40,6 +45,7 @@ const styles = StyleSheet.create({
         paddingTop: 47,
         paddingHorizontal: 28,
         gap: 42,
+        position: "relative"
         // justifyContent: 'centser'
     },
     trasactions: {
@@ -51,5 +57,11 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         fontWeight: 'bold',
         marginBottom: 20,
+    },
+    newProduct: {
+        position: "absolute",
+        bottom: 18,
+        right: 27,
+        backgroundColor: "#fff",
     }
 })

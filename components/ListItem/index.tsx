@@ -1,7 +1,8 @@
-import { Image, StyleSheet, Text, View } from "react-native"
+import { Image, Pressable, StyleSheet, Text, View } from "react-native"
 import { PaymentMethodsType } from "../../types/payment";
 import { useState } from "react";
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
+import { DialogBox } from "../DialogBox";
 
 type Props = {
     type: 'sell' | 'product' | 'viewProduct';
@@ -68,15 +69,22 @@ type ProductsProps = {
 }
 
 const ProductItem = (props: ProductsProps) => {
+    const [showEditOptions, setShowEditOptions] = useState(false)
+
+    const { id, name, price } = props
+
     return (
         <View style={styles.productContainer}>
             {/* <Image source={require("assets/")} /> */}
             <View>
-                <Text style={styles.titleItem}>{props.name}</Text>
-                <Text style={styles.priceItem}>R$ {String((props.price / 100).toFixed(2)).replace(".", ",")}</Text>
+                <Text style={styles.titleItem}>{name}</Text>
+                <Text style={styles.priceItem}>R$ {String((price / 100).toFixed(2)).replace(".", ",")}</Text>
             </View>
-            <View>
-                <SimpleLineIcons name="options-vertical" size={24} color="#868C9F" />
+            <View style={styles.editOptionsContent}>
+                <Pressable onPress={()=> setShowEditOptions(true)}>
+                    <SimpleLineIcons name="options-vertical" size={24} color="#868C9F" />
+                </Pressable>
+                {showEditOptions && <DialogBox setShowEditOptions={setShowEditOptions} editOption={{id, name, price}} />}
             </View>
         </View>
     )
@@ -121,5 +129,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
+    },
+    editOptionsContent: {
+        position: "relative"
     }
 })

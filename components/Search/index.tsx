@@ -12,6 +12,7 @@ export const Search = () => {
                 value={search}
                 onChangeText={setSearch}
                 keyboardType="default"
+                placeholder="Procure por algum produtos"
             />
             <Pressable style={styles.icon} onPress={()=> {
                 alert(search)
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         paddingVertical: 16,
         paddingHorizontal: 22,
-        borderRadius: 10
+        borderRadius: 10,
     },
     icon: {
         position: "absolute",

@@ -10,7 +10,7 @@ export default function Home() {
             <View style={styles.cards}>
                 <BoxCategory title="Produtos" link="" /> 
                 <BoxCategory title="Vendas" link="" /> 
-                <BoxCategory title="Relatósrios" link="" /> 
+                <BoxCategory title="Relatórios" link="" /> 
             </View>
             <View style={styles.trasactions}>
                 <Text style={styles.trasactionsTitle}>Transações recentes</Text>

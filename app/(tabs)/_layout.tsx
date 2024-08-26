@@ -10,6 +10,7 @@ export default function (){
             tabBarShowLabel: false,
         }}>
             <Tabs.Screen name="index" options={{
+                headerShown: true,
                 headerTitle: "Caixa",
                 tabBarIcon: ({color}) => <Component color={color} text="Home" />
             }} />
@@ -17,7 +18,8 @@ export default function (){
                 headerTitle: "Vendas",
                 tabBarIcon: ({color}) => <Component color={color} text="Vendas" />
             }} />
-            <Tabs.Screen name="produtos" options={{
+            <Tabs.Screen name="(products)" options={{
+                headerShown: false,
                 headerTitle: "Produtos",
                 tabBarIcon: ({color}) => <Component color={color} text="Produtos" />
             }} />
