@@ -1,8 +1,8 @@
 import { Text, View, SafeAreaView, StyleSheet, ScrollView, Button, Pressable } from "react-native";
-import AntDesign from '@expo/vector-icons/AntDesign';
+
 import { ListItem } from "../../../components/ListItem";
 import { Search } from "../../../components/Search";
-import { router } from "expo-router";
+
 
 export default function Home() {
     return (
@@ -28,11 +28,6 @@ export default function Home() {
                     
                 </ScrollView>
             </View>
-            <Pressable style={styles.newProduct} onPress={()=>{
-                router.navigate("(tabs)/(products)/newproduct")
-            }}>
-                <AntDesign name="pluscircleo" size={64} color="#12A454" />
-            </Pressable>
         </SafeAreaView>
     )
 }

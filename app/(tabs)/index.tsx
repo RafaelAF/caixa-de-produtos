@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     },
     cards: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         width: '100%',
         marginHorizontal: 9,
     },
